@@ -1,8 +1,17 @@
+[![npm](https://img.shields.io/npm/v/@pirireis/react-json-view.svg)](https://www.npmjs.com/package/@pirireis/react-json-view) [![npm](https://img.shields.io/npm/l/@pirireis/react-json-view.svg)](https://github.com/pirireisbilisim/react-json-view/blob/master/LISCENSE)
 
 # Info 
 
 We forked this repo because we needed checkboxes to select nodes in json. You are free to use this package but if you need reliablity use origin package. We will not maintain this code, probably.
 
+# Usage
+
+Install package with:
+
+    npm i @pirireis/react-json-view
+    
+and use like original package.
+    
 ### New Props
 Name|Type|Default|Description
 |:---|:---|:---|:---
