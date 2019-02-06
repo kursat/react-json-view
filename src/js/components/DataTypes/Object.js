@@ -170,6 +170,33 @@ class RjvObject extends React.PureComponent {
         );
     }
 
+    renderSelectableComponent() {
+        let content = null;
+
+        if (this.props.selectable)
+            content = (
+                <input type={'checkbox'} className={'rjv-checkbox'} onClick={e => {
+
+                    const {namespace, name, onSelect} = this.props;
+                    const {object_type} = this.state;
+
+                    let location = [...namespace];
+                    location.pop();
+
+                    let data = {
+                        name,
+                        type: object_type,
+                        namespace: location
+                    };
+
+                    onSelect(data, e.currentTarget.checked);
+
+                }}/>
+            );
+
+        return content;
+    }
+
     render() {
         // `indentWidth` and `collapsed` props will
         // perpetuate to children via `...rest`
@@ -201,6 +228,7 @@ class RjvObject extends React.PureComponent {
                 class="object-key-val"
                 {...Theme(theme, jsvRoot ? 'jsv-root' : 'objectKeyVal', styles)}
             >
+                {this.renderSelectableComponent()}
                 {this.getBraceStart(object_type, expanded)}
                 {expanded
                     ? this.getObjectContent(depth, src, {

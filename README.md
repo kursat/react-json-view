@@ -1,3 +1,20 @@
+
+# Info 
+
+We forked this repo because we needed checkboxes to select nodes in json. You are free to use this package but if you need reliablity use origin package. We will not maintain this code, probably.
+
+### New Props
+Name|Type|Default|Description
+|:---|:---|:---|:---
+`selectable`|`Boolean`|false|If this prop is true, every node will have a checkbox.
+`onSelect`|`(select, checked)=>{}`|false| Previous behaviour has been removed, checkboxes trigger this function when clicked. No triggers present on value click.
+
+---
+
+Original README.md
+
+---
+
 ![alt text](https://github.com/mac-s-g/react-json-view/blob/master/doc/rjv-icon-alt.png?raw=true)
 
 [![npm](https://img.shields.io/npm/v/react-json-view.svg)](https://www.npmjs.com/package/react-json-view) [![npm](https://img.shields.io/npm/l/react-json-view.svg)](https://github.com/mac-s-g/react-json-view/blob/master/LISCENSE) [![Build Status](https://travis-ci.org/mac-s-g/react-json-view.svg)](https://travis-ci.org/mac-s-g/react-json-view) [![Coverage Status](https://coveralls.io/repos/github/mac-s-g/react-json-view/badge.svg?branch=master)](https://coveralls.io/github/mac-s-g/react-json-view?branch=master)

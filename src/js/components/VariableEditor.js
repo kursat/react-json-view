@@ -41,6 +41,31 @@ class VariableEditor extends React.PureComponent {
         };
     }
 
+    renderSelectableComponent() {
+        let content = null;
+
+        if (this.props.selectable)
+            content = (
+                <input type={'checkbox'} className={'rjv-checkbox'} onClick={e => {
+
+                    const {namespace, variable, onSelect} = this.props;
+
+                    let location = [...namespace];
+
+                    let data = {
+                        name: variable.name,
+                        type: variable.type,
+                        namespace: location
+                    };
+
+                    onSelect(data, e.currentTarget.checked);
+
+                }}/>
+            );
+
+        return content;
+    }
+    
     render() {
         const {
             variable,
@@ -66,6 +91,7 @@ class VariableEditor extends React.PureComponent {
                 class="variable-row"
                 key={variable.name}
             >
+                {this.renderSelectableComponent()}
                 {type == 'array' ? (
                     <span
                         {...Theme(theme, 'array-key')}
@@ -92,22 +118,6 @@ class VariableEditor extends React.PureComponent {
                 )}
                 <div
                     class="variable-value"
-                    onClick={
-                        onSelect === false && onEdit === false
-                            ? null
-                            : e => {
-                                let location = [...namespace];
-                                if ((e.ctrlKey || e.metaKey) && onEdit !== false) {
-                                    this.prepopInput(variable);
-                                } else if (onSelect !== false) {
-                                    location.shift();
-                                    onSelect({
-                                        ...variable,
-                                        namespace: location
-                                    });
-                                }
-                            }
-                    }
                     {...Theme(theme, 'variableValue', {
                         cursor: onSelect === false ? 'default' : 'pointer'
                     })}

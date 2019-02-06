@@ -12,6 +12,40 @@ import JsonViewer from "./../../src/js/index"
 //render 2 different examples of the react-json-view component
 ReactDom.render(
     <div>
+        {/* custom theme example */}
+        <JsonViewer
+            enableClipboard={false}
+            src={getExampleJson1()}
+            shouldCollapse={({ src, namespace, type }) =>
+                namespace.indexOf("moment") > -1
+            }
+            selectable={true}
+            onSelect={(data, checked) => {
+                console.log('onselect:data: ', data);
+                console.log('onselect:checked: ', checked);
+            }}
+            theme={{
+                base00: "white",
+                base01: "#ddd",
+                base02: "#ddd",
+                base03: "#444",
+                base04: "purple",
+                base05: "#444",
+                base06: "#444",
+                base07: "#444",
+                base08: "#444",
+                base09: "rgba(70, 70, 230, 1)",
+                base0A: "rgba(70, 70, 230, 1)",
+                base0B: "rgba(70, 70, 230, 1)",
+                base0C: "rgba(70, 70, 230, 1)",
+                base0D: "rgba(70, 70, 230, 1)",
+                base0E: "rgba(70, 70, 230, 1)",
+                base0F: "rgba(70, 70, 230, 1)"
+            }}
+        />
+
+        <br />
+
         {/* just pass in your JSON to the src attribute */}
         <JsonViewer
             sortKeys
@@ -132,33 +166,6 @@ ReactDom.render(
         />
 
         <br />
-
-        {/* custom theme example */}
-        <JsonViewer
-            enableClipboard={false}
-            src={getExampleJson1()}
-            shouldCollapse={({ src, namespace, type }) =>
-                namespace.indexOf("moment") > -1
-            }
-            theme={{
-                base00: "white",
-                base01: "#ddd",
-                base02: "#ddd",
-                base03: "#444",
-                base04: "purple",
-                base05: "#444",
-                base06: "#444",
-                base07: "#444",
-                base08: "#444",
-                base09: "rgba(70, 70, 230, 1)",
-                base0A: "rgba(70, 70, 230, 1)",
-                base0B: "rgba(70, 70, 230, 1)",
-                base0C: "rgba(70, 70, 230, 1)",
-                base0D: "rgba(70, 70, 230, 1)",
-                base0E: "rgba(70, 70, 230, 1)",
-                base0F: "rgba(70, 70, 230, 1)"
-            }}
-        />
 
         <JsonViewer
             theme="hopscotch"
