@@ -1,5 +1,5 @@
 {
-    "name": "react-json-view",
+    "name": "pr-react-json-view",
     "description":
         "Interactive react component for displaying javascript arrays and JSON objects.",
     "version": "1.19.1",
