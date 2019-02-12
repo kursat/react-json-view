@@ -15,8 +15,9 @@ and use like original package.
 ### New Props
 Name|Type|Default|Description
 |:---|:---|:---|:---
-`selectable`|`Boolean`|false|If this prop is true, every node will have a checkbox.
-`onSelect`|`(select, checked)=>{}`|false| Previous behaviour has been removed, checkboxes trigger this function when clicked. No triggers present on value click.
+`~~selectable~~`|`Boolean`|false|This was redundant and removed. onSelect will decide if checkboxes are necessary.
+`onSelect`|`(data, checked)=>{}`|false| Previous behaviour has been removed, checkboxes trigger this function when clicked. No triggers present on value click.
+`selectWithValues`|`Boolean`|false| data in select callback will include values of that node if this prop is true.
 
 ---
 

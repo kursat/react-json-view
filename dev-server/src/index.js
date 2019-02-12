@@ -19,7 +19,7 @@ ReactDom.render(
             shouldCollapse={({ src, namespace, type }) =>
                 namespace.indexOf("moment") > -1
             }
-            selectable={true}
+            selectWithValues={true}
             onSelect={(data, checked) => {
                 console.log('onselect:data: ', data);
                 console.log('onselect:checked: ', checked);

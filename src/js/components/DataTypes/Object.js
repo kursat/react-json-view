@@ -173,11 +173,11 @@ class RjvObject extends React.PureComponent {
     renderSelectableComponent() {
         let content = null;
 
-        if (this.props.selectable)
+        if (this.props.onSelect)
             content = (
                 <input type={'checkbox'} className={'rjv-checkbox'} onClick={e => {
 
-                    const {namespace, name, onSelect} = this.props;
+                    const {namespace, name, onSelect, src} = this.props;
                     const {object_type} = this.state;
 
                     let location = [...namespace];
@@ -188,6 +188,10 @@ class RjvObject extends React.PureComponent {
                         type: object_type,
                         namespace: location
                     };
+
+                    if (this.props.selectWithValues) {
+                        data.value = src;
+                    }
 
                     onSelect(data, e.currentTarget.checked);
 

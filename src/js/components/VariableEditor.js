@@ -44,7 +44,7 @@ class VariableEditor extends React.PureComponent {
     renderSelectableComponent() {
         let content = null;
 
-        if (this.props.selectable)
+        if (this.props.onSelect)
             content = (
                 <input type={'checkbox'} className={'rjv-checkbox'} onClick={e => {
 
@@ -57,6 +57,10 @@ class VariableEditor extends React.PureComponent {
                         type: variable.type,
                         namespace: location
                     };
+
+                    if (this.props.selectWithValues) {
+                        data.value = variable.value;
+                    }
 
                     onSelect(data, e.currentTarget.checked);
 
