@@ -232,7 +232,7 @@ class RjvObject extends React.PureComponent {
                 class="object-key-val"
                 {...Theme(theme, jsvRoot ? 'jsv-root' : 'objectKeyVal', styles)}
             >
-                {this.renderSelectableComponent()}
+                {name !== false && name !== 'root' ? this.renderSelectableComponent() : null}
                 {this.getBraceStart(object_type, expanded)}
                 {expanded
                     ? this.getObjectContent(depth, src, {

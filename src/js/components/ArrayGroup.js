@@ -40,6 +40,37 @@ export default class extends React.PureComponent {
         return <CollapsedIcon {...{theme, iconStyle}} />;
     }
 
+    renderSelectableComponent() {
+        let content = null;
+
+        if (this.props.onSelect)
+            content = (
+                <input type={'checkbox'} className={'rjv-checkbox'} onClick={e => {
+
+                    const {namespace, name, onSelect, src} = this.props;
+                    const {object_type} = this.state;
+
+                    let location = [...namespace];
+                    location.pop();
+
+                    let data = {
+                        name,
+                        type: 'array',
+                        namespace: location
+                    };
+
+                    if (this.props.selectWithValues) {
+                        data.value = 'Long array';
+                    }
+
+                    onSelect(data, e.currentTarget.checked);
+
+                }}/>
+            );
+
+        return content;
+    }
+
     render() {
         const {
             src, groupArraysAfterLength, depth,
@@ -61,8 +92,8 @@ export default class extends React.PureComponent {
         return (<div class='object-key-val'
             {...Theme(theme, jsvRoot ? 'jsv-root' : 'objectKeyVal', {paddingLeft: object_padding_left})}
         >
+            {this.renderSelectableComponent()}
             <ObjectName {...this.props} />
-
             <span>
                 <VariableMeta size={src.length} {...this.props}/>
             </span>

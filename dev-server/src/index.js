@@ -8,6 +8,7 @@ import Moment from "moment"
 
 //import the react-json-view component (installed with npm)
 import JsonViewer from "./../../src/js/index"
+import longJson from './longJson';
 
 //render 2 different examples of the react-json-view component
 ReactDom.render(
@@ -184,31 +185,7 @@ ReactDom.render(
 
 //just a function to get an example JSON object
 function getExampleJson1() {
-    return {
-        string: "this is a test string",
-        integer: 42,
-        empty_array: [],
-        empty_object: {},
-        array: [1, 2, 3, "test"],
-        float: -2.757,
-        undefined_var: undefined,
-        parent: {
-            sibling1: true,
-            sibling2: false,
-            sibling3: null,
-            isString: value => {
-                if (typeof value === "string") {
-                    return "string"
-                } else {
-                    return "other"
-                }
-            }
-        },
-        string_number: "1234",
-        date: new Date(),
-        moment: Moment(),
-        regexp: /[0-9]/gi
-    }
+    return longJson;
 }
 
 //and another a function to get an example JSON object
