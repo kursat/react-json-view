@@ -18,6 +18,7 @@ Name|Type|Default|Description
 `~~selectable~~`|`Boolean`|false|This was redundant and removed. onSelect will decide if checkboxes are necessary.
 `onSelect`|`(data, checked)=>{}`|false| Previous behaviour has been removed, checkboxes trigger this function when clicked. No triggers present on value click.
 `selectWithValues`|`Boolean`|false| data in select callback will include values of that node if this prop is true.
+`customButtons`|`Array<{title, onClick: (event, data) => {}, visibleFor, render}>`|undefined| Renders custom buttons with render function. Title is for html title attr. visibleFor should be an array contains all types where button should be visible. onClick is obvious.
 
 ---
 

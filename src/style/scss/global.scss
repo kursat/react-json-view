@@ -12,6 +12,11 @@
     .click-to-edit {
         display: none;
     }
+    .custom-button {
+        vertical-align: top;
+        display: none;
+        cursor: pointer;
+    }
 
     .object-key-val {
         &:hover > span > .object-meta-data {
@@ -24,12 +29,18 @@
             & > .click-to-remove {
                 display: inline-block;
             }
+            & > .custom-button {
+                display: inline-block;
+            }
         }
     }
 
     .variable-row {
         &:hover {
             & .copy-to-clipboard-container {
+                display: inline-block;
+            }
+            & .custom-button {
                 display: inline-block;
             }
         }

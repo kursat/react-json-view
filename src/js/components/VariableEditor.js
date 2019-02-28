@@ -69,6 +69,47 @@ class VariableEditor extends React.PureComponent {
 
         return content;
     }
+
+    renderCustomButtons() {
+
+        const {namespace, variable, customButtons} = this.props;
+
+        if (!customButtons) return null;
+        return customButtons
+            .filter(cb => cb.visibleFor.includes(variable.type))
+            .map((customButton, customButtonIndex) => {
+                return (
+                    <span className="custom-button" title={customButton.title} key={customButtonIndex}>
+                        <span
+                            onClick={(e) => {
+
+                                let location = [...namespace];
+
+                                let data = {
+                                    name: variable.name,
+                                    type: variable.type,
+                                    namespace: location
+                                };
+
+                                if (this.props.selectWithValues) {
+                                    data.value = variable.value;
+                                }
+
+                                customButton.onClick(e, data);
+                            }}
+                            style={{
+                                cursor: 'pointer',
+                                display: 'inline',
+                            }}
+                        >
+                            <span>
+                                {customButton.render && customButton.render()}
+                            </span>
+                        </span>
+                    </span>
+                );
+            });
+    }
     
     render() {
         const {
@@ -128,6 +169,7 @@ class VariableEditor extends React.PureComponent {
                 >
                     {this.getValue(variable, editMode)}
                 </div>
+                {this.renderCustomButtons()}
                 {enableClipboard ? (
                     <CopyToClipboard
                         hidden={editMode}

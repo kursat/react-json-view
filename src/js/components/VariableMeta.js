@@ -101,6 +101,42 @@ export default class extends React.PureComponent {
         );
     }
 
+    renderCustomButtons() {
+
+        const {name, type, customButtons, namespace, src} = this.props;
+
+        if (!customButtons) return null;
+        return customButtons
+            .filter(cb => cb.visibleFor.includes(type))
+            .map((customButton, customButtonIndex) => {
+                return (
+                    <span className="custom-button" title={customButton.title} key={customButtonIndex}>
+                        <span
+                            onClick={(e) => {
+
+                                let location = [...namespace];
+                                location.pop();
+
+                                let data = {
+                                    name,
+                                    type,
+                                    namespace: location
+                                };
+
+                                if (this.props.selectWithValues) {
+                                    data.value = src;
+                                }
+
+                                customButton.onClick(e, data);
+                            }}
+                        >
+                            {customButton.render && customButton.render()}
+                        </span>
+                    </span>
+                );
+            });
+    }
+
     render = () => {
         const {
             theme,
@@ -121,6 +157,7 @@ export default class extends React.PureComponent {
                 {/* size badge display */}
                 {this.getObjectSize()}
                 {/* copy to clipboard icon */}
+                {this.renderCustomButtons()}
                 {enableClipboard
                     ? (<CopyToClipboard
                         clickCallback={enableClipboard}
